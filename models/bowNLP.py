@@ -6,7 +6,7 @@ from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import confusion_matrix
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 
 df = pd.read_csv("../data/cell_phones.tsv", sep='\t')
 df.head()
@@ -40,3 +40,6 @@ classifier.fit(X_train, y_train)
 
 y_pred = classifier.predict(X_test)
 cm = confusion_matrix(y_test, y_pred)
+print(confusion_matrix(y_test, y_pred))
+print(classification_report(y_test, y_pred))
+print(accuracy_score(y_test, y_pred))
